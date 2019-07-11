@@ -12,11 +12,11 @@ namespace autopilot{
        private:
            void parse_states_and_actions();
 
-           std::map<std::string,int> d_state_to_int;
-           std::map<std::string,int> d_action_to_int;
-           std::vector<std::string> d_int_to_state;
-           std::vector<std::string> d_int_to_action;
-           std::vector<observation>* d_observations;
+           std::map<std::string,int> d_state_to_int_;
+           std::map<std::string,int> d_action_to_int_;
+           std::vector<std::string> d_int_to_state_;
+           std::vector<std::string> d_int_to_action_;
+           std::vector<observation>* d_observations_;
        public:
            explicit StateActionEncoder(std::vector<observation>* observations);
            StateActionEncoder(const StateActionEncoder&)=delete;
