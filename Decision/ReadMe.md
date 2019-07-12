@@ -108,3 +108,44 @@ V&=(I-\gamma P)^{-1}
 - 动态规划 *Dynamic Programming*
 - 蒙特卡洛评估 *Monte-Carlo evaluation*
 - 时序差分学习 *Temporal-Difference*
+
+### Optimal Value Function
+
+定义最优值函数,
+$$V^*(s)=max_\pi V^\pi(s)$$
+Bellman 方程版本的最优值函数
+$$V^*(s)=R(s)+max_{a\in A}\gamma \sum_{s'\in S}P_{sa}(s')V^{*}(s)$$
+因此,我们也能定义一个最优策略$\pi^*$,使的$S\mapsto A$,
+$$\pi^*(s)=argmax_{a\in A}\sum_{s'\in S} P_{sa}(s')V^{*}(s')$$
+
+### Value iteration and policy iteration
+
+寻找最优策略的两种迭代方法,
+*Algorithm value iteration*
+1.For each state s, initialize V(s):=0;
+2. Repeat until converagence{
+    For every state,update $V(s):=R(s)+max_{a\in A}\gamma \sum_{s'\in S} P_{sa}(s')V(s')$
+}
+
+*Algorithm policy iteration*
+1.Initialize $\pi$ randomly
+2. Repeat until converagence{
+    (a)Let $V:=V^\pi$
+    (b)For each state s,let $\pi(s):=argmax_{a\in A}\sum_{s'\in S}P_{sa}(s')V(s')$
+}
+2.(b)这一步也叫关于V的贪心策略,
+
+>对于小规模的MDP问题,policy迭代通常是非常快速的,并且很少次的迭代就能收敛,然而对于对于大状态空间的MDP问题,就涉及求解大状态空间线性方程,此时比较计算复杂,更适合进行值迭代.出于这个原因,再实践中,值迭代通常被使用.
+### Learing a model for an MDP
+ > 源代码采用此种方式进行实现,具体算法思路参考[CS229 Lecture notes-Reinforcement Learning and Control](https://github.com/Zane2019/AutoPilot/blob/master/Decision/Reference/cs229-notes12.pdf)
+
+### Continuous MDPs
+- Discretization
+进行状态离散化适用于4纬状态及以下,运气好能达到6维状态可用,再高维的就很少能正常工作了
+- Value function approximation(1.using a model or simulator,2.Fitted value iteration)
+
+##### Reference
+
+- [CS229 Lecture notes-Reinforcement Learning and Control](https://github.com/Zane2019/AutoPilot/blob/master/Decision/Reference/cs229-notes12.pdf)
+- [忆臻-马尔科夫决策过程](https://zhuanlan.zhihu.com/p/35261164)
+- [UCL Course on RL](http://www0.cs.ucl.ac.uk/staff/D.Silver/web/Teaching.html)

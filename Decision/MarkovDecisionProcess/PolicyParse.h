@@ -12,8 +12,8 @@ class PolicyParse {
   const int d_action_count_;
 
  public:
-  inline PolicyParse(int state_count, int action_state)
-      : d_state_count_(state_count), d_action_count_(action_state){};
+  inline PolicyParse(int state_count, int action_count)
+      : d_state_count_(state_count), d_action_count_(action_count){};
   std::vector<int> policy(const tensor& p,
                           const std::vector<double>& rewards) const;
   ~PolicyParse();
