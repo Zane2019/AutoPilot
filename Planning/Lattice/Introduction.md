@@ -107,6 +107,12 @@ centripetal_acc_sqr_sum += centripetal_acc * centripetal_acc;
          (centripetal_acc_sum + FLAGS_numerical_epsilon);
 
 
+
+
+ST图
+
+
+
 #### Tips:
 
 再apollo中由于存在不同结束的曲线,它直接建立一个curve纯虚的基类,提供相应的接口(如计算曲线不同的阶数值),去做多台,以至于再规划层我们不需要知道曲线的具体实例,直接调用基类指针,去实现相应功能.
